@@ -86,6 +86,21 @@ int getLinkedListLength(LinkedList* pList) {
 	return 0;
 }
 
+void iterateLinkedList(LinkedList* pList)
+{
+	int count = 0;
+	LinkedListNode* pNode = NULL;
+	
+	pNode = pList->headerNode.pLink;
+	while(pNode != NULL) {
+		printf("[%d],%d\n", count, pNode->data); //로직 처리 부분: 자료를 출력
+		count++;
+
+		pNode = pNode->pLink;
+	}
+	printf("노드 개수 : %d\n", count);
+}
+
 int main(int argc, char *argv[]) {
 	LinkedList *pList = NULL;
 	int value = 0;
