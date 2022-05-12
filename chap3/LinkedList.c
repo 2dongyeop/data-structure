@@ -101,6 +101,18 @@ void iterateLinkedList(LinkedList* pList)
 	printf("노드 개수 : %d\n", count);
 }
 
+void concatLinkedList(LinkedList* pListA, LinkedList* pListB) {
+	LinkedListNode* pNodeA = NULL;
+	if (pListA != NULL && pListB != NULL) {    //입력 파라미터 유효성 점검
+		pNodeA = pListA->headerNode.pLink;
+		while(pNodeA != NULL && pNodeA->pLink !=NULL) {
+			pNodeA = pNodeA->pLink;
+		}
+		pNodeA->pLink = pListB->headerNode.pLink;
+		pListB->headerNode.pLink = NULL;
+	}
+}
+
 int main(int argc, char *argv[]) {
 	LinkedList *pList = NULL;
 	int value = 0;
