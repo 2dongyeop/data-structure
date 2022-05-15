@@ -87,7 +87,7 @@ LinkedStackNode* peekLS(LinkedStack* pStack)
 void deleteLinkedStack(LinkedStack* pStack)
 {
 	LinkedStackNode *pNode = NULL;
-	LinkedStackNode *pPreNode = NULL;
+	LinkedStackNode *pDelNode = NULL;
 	
 	if(pStack != NULL) {
 		pNode = pStack->pTop;
