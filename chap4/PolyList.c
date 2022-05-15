@@ -143,10 +143,10 @@ PolyList* polyAdd(PolyList* pListA, PolyList* pListB)
 		pNodeB = pListB->headerNode.pLink;
 		while(pNodeA != NULL && pNodeB != NULL) {
 			int degreeA = pNodeA->data.degree;
-			int degreeB = pNodeB->daga.degree;
+			int degreeB = pNodeB->data.degree;
 			if(degreeA < degreeB) {
 				coefSum = pNodeA->data.coef;
-				addPolyNodeLast(pReturn, coefSym, defreeA);
+				addPolyNodeLast(pReturn, coefSum, degreeA);
 				pNodeA = pNodeA->pLink;
 			}
 			else if(degreeA == degreeB) {
@@ -170,7 +170,7 @@ PolyList* polyAdd(PolyList* pListA, PolyList* pListB)
 		}
 
 		while(pNodeB != NULL) {
-			coefSum = pNode->data.coef;
+			coefSum = pNodeB->data.coef;
 			addPolyNodeLast(pReturn, coefSum, pNodeB->data.degree);
 			pNodeB = pNodeB->pLink;
 		}
@@ -207,7 +207,7 @@ int main(int argc, char *argv[])
 		addPolyNodeLast(pListB, 4, 0);
 		displayPolyList(pListB);
 
-		pListC = polyAdd(pListA, pListb);
+		pListC = polyAdd(pListA, pListB);
 		if(pListC != NULL) {
 			displayPolyList(pListC);
 			deleteLinkedList(pListC);
