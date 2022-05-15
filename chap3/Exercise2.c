@@ -5,7 +5,7 @@
 
 typedef struct LinkedListNodeType {
 	int data;                        //int형 정수를 자료로 저장하는 노드
-	struct LinkedListNode *pLink;    //다음 노드의 연결 정보를 저장
+	struct LinkedListNodeType *pLink;    //다음 노드의 연결 정보를 저장
 } LinkedListNode;
 
 typedef struct LinkedListType {
@@ -19,7 +19,7 @@ LinkedList *createLinkedList() {
 	return pReturn;
 }
 
-int getLinkedListData(LinkedList* pList, int position) {
+int getLinkedListData(LinkedList *pList, int position) {
 	int i = 0;
 	
 	LinkedListNode *pCurrentNode = &(pList->headerNode);
@@ -30,12 +30,12 @@ int getLinkedListData(LinkedList* pList, int position) {
 	return pCurrentNode->data;
 }
  
-int addLinkedListData(LinkedList* pList, int position, int data) {
+int addLinkedListData(LinkedList *pList, int position, int data) {
 	int i = 0;
 	LinkedListNode *pNewNode = NULL;
 	LinkedListNode *pPreNode = NULL;
 	
-	pNewNode = (LinkedListNode* )malloc(sizeof(LinkedListNode));
+	pNewNode = (LinkedListNode *)malloc(sizeof(LinkedListNode));
 	pNewNode->data = data;
 	
 	pPreNode = &(pList->headerNode);
@@ -49,7 +49,7 @@ int addLinkedListData(LinkedList* pList, int position, int data) {
 	return 0;
 }
 
-int removeLinkedListData(LinkedList* pList, int position) {
+int removeLinkedListData(LinkedList *pList, int position) {
 	int i = 0;
 	LinkedListNode *pDelNode = NULL;
 	LinkedListNode *pPreNode = NULL;
@@ -67,7 +67,7 @@ int removeLinkedListData(LinkedList* pList, int position) {
 	return 0;
 }
 
-void deleteLinkedList(LinkedList* pList) {
+void deleteLinkedList(LinkedList *pList) {
 	LinkedListNode *pDelNode = NULL;
 	LinkedListNode *pPreNode = pList->headerNode.pLink;
 	while(pPreNode != NULL) {
@@ -80,14 +80,14 @@ void deleteLinkedList(LinkedList* pList) {
 	free(pList);
 }
 
-int getLinkedListLength(LinkedList* pList) {
+int getLinkedListLength(LinkedList *pList) {
 	if (NULL != pList) {
 		return pList->currentCount++;
 	}
 	return 0;
 }
 
-void iterateLinkedList(LinkedList* pList)
+void iterateLinkedList(LinkedList *pList)
 {
 	int count = 0;
 	LinkedListNode* pNode = NULL;
@@ -105,26 +105,28 @@ void iterateLinkedList(LinkedList* pList)
 int main(int argc, char *argv[]) {
 	LinkedList *pList = createLinkedList();
     int i = 0;
+	
     bool run = true;
     int count = 0;
     double sum = 0;
     float avg = 0;
   
     while(run) {
-    float input = 0.0;
-  
-    printf("%d번째 점수는(-1을 입력하면 끝납니다)? ",(count + 1));
-    scanf("%f", &input);
+		float input = 0.0;
+	
+		printf("%d번째 점수는(-1을 입력하면 끝납니다)? ",(count + 1));
+		scanf("%f", &input);
 
-    if(input == (-1)) {
-        if(count == 0) {
-            printf("1명 이상의 점수를 입력해야 합니다.");
-        }
-        break;
-    } else {
-        addLinkedListData(pList, count, input);
-        count++; 
-        }
+		if(input == (-1)) {
+			if(count == 0) {
+				printf("1명 이상의 점수를 입력해야 합니다.");
+			}
+			break;
+		} 
+		else {
+			addLinkedListData(pList, count, input);
+			count++; 
+		}
     }
     for(i = 0; i < getLinkedListLength(pList); i++) {
         sum += getLinkedListData(pList, i);
