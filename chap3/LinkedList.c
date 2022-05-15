@@ -14,7 +14,9 @@ typedef struct LinkedListType {
 
 LinkedList *createLinkedList() {
 	LinkedList *pReturn = (LinkedList *)malloc(sizeof(LinkedList));
+	if (pReturn != NULL) {
 	memset(pReturn, 0, sizeof(LinkedList));   //할당된 메모리를 0으로 초기화
+	}
 	return pReturn;
 }
 
@@ -41,6 +43,10 @@ int addLinkedListData(LinkedList* pList, int position, int data) {
 	for (i = 0; i < position; i++) {
 		pPreNode = pPreNode->pLink;      //새로운 자료를 추가할 위치로 이동
 	}
+
+	if (position >= pList->currentCount) {
+		return 1;
+	} 
 
 	pNewNode->pLink = pPreNode->pLink; //다음 노드의 처리
 	pPreNode->pLink = pNewNode;        //이전 노드의 처리
