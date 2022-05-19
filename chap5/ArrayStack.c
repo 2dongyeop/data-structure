@@ -20,7 +20,7 @@ ArrayStack* createArrayStack(int size)
 	pReturn->maxCount = size;  //최대 자료 개수 지정
 
 	pReturn->pData = (ArrayStackNode *)malloc(sizeof(ArrayStackNode) * size);
-	memsset(pReturn->pData, 0, sizeof(ArrayStackNode) * size);
+	memset(pReturn->pData, 0, sizeof(ArrayStackNode) * size);
 
 	return pReturn;
 } 
@@ -83,7 +83,7 @@ ArrayStackNode* popAS(ArrayStack* pStack)
 
 ArrayStackNode* peekAS(ArrayStack* pStack)
 {
-	ArrayStackNode* pRetrun = NULL;
+	ArrayStackNode* pReturn = NULL;
 	if(pStack != NULL) {
 		if(isArrayStackEmpty(pStack) == 0) {
 			pReturn = &(pStack->pData[pStack->currentCount - 1]);
