@@ -91,7 +91,7 @@ void iterateLinkedList(LinkedList* pList)
 	int count = 0;
 	LinkedListNode* pNode = NULL;
 	
-	pNode = pList->headerNode.pLink;
+	pNode = pList ->headerNode.pLink;
 	while(pNode != NULL) {
 		printf("[%d],%d\n", count, pNode->data); //로직 처리 부분: 자료를 출력
 		count++;
